@@ -32,7 +32,7 @@ import com.google.android.gms.wallet.WalletConstants;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.sentry.util.Nullable;
+
 
 public final class BraintreePlugin extends CordovaPlugin implements PaymentMethodNonceCreatedListener, BraintreeErrorListener {
 
@@ -118,7 +118,8 @@ public final class BraintreePlugin extends CordovaPlugin implements PaymentMetho
      * @param currency
      * @param merchantId
      */
-    private void enableGooglePay(DropInRequest dropInRequest, String amount, String currency, @Nullable String merchantId) {
+    private void enableGooglePay(DropInRequest dropInRequest, String amount, String currency,  String merchantId) {
+        
         GooglePaymentRequest googlePaymentRequest = new GooglePaymentRequest()
                 .transactionInfo(TransactionInfo.newBuilder()
                         .setTotalPrice(amount)
