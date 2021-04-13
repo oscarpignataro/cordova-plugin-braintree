@@ -64,6 +64,8 @@ public final class BraintreePlugin extends CordovaPlugin implements PaymentMetho
             }
             else if (action.equals("presentDropInPaymentUI")) {
                 this.presentDropInPaymentUI(args);
+            } else if (action.equals("presentDropInPaymentUITest")) {
+                this.presentDropInPaymentUI(args);
             }
             else if (action.equals("paypalProcess")) {
                 this.paypalProcess(args);
