@@ -119,7 +119,7 @@ public final class BraintreePlugin extends CordovaPlugin implements PaymentMetho
      * @param merchantId
      */
     private void enableGooglePay(DropInRequest dropInRequest, String amount, String currency,  String merchantId) {
-        
+
         GooglePaymentRequest googlePaymentRequest = new GooglePaymentRequest()
                 .transactionInfo(TransactionInfo.newBuilder()
                         .setTotalPrice(amount)
@@ -281,6 +281,7 @@ public final class BraintreePlugin extends CordovaPlugin implements PaymentMetho
      */
     private void handleDropInPaymentUiResult(int resultCode, PaymentMethodNonce paymentMethodNonce, String deviceData) {
 
+        try {
         Log.i(TAG, "handleDropInPaymentUiResult resultCode ==> " + resultCode + ", paymentMethodNonce = " + paymentMethodNonce);
 
         if (_callbackContext == null) {
@@ -305,6 +306,10 @@ public final class BraintreePlugin extends CordovaPlugin implements PaymentMetho
         Map<String, Object> resultMap = this.getPaymentUINonceResult(paymentMethodNonce, deviceData);
         _callbackContext.success(new JSONObject(resultMap));
         _callbackContext = null;
+        } catch (Exception e) {
+            Log.e(TAG, "onPaymentMethodNonceCreated  ==> error:" + ex.getMessage());
+            ex.printStackTrace();
+        }
     }
 
     /**
