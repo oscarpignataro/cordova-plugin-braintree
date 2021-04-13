@@ -90,6 +90,35 @@ BraintreePlugin.presentDropInPaymentUI = function showDropInUI(options, successC
   exec(successCallback, failureCallback, PLUGIN_ID, 'presentDropInPaymentUI', pluginOptions);
 };
 
+/**
+ * Shows Braintree's drop-in payment UI.
+ *
+ * @param {object} options - The options used to control the drop-in payment UI.
+ * @param [function] successCallback - The success callback for this asynchronous function; receives a result object.
+ * @param [function] failureCallback - The failure callback for this asynchronous function; receives an error string.
+ */
+
+BraintreePlugin.presentDropInPaymentUITest = function showDropInUI(options, successCallback, failureCallback) {
+
+  if (!options) {
+    options = {};
+  }
+
+  if (typeof (options.amount) === 'undefined') {
+    options.amount = '0.00';
+  }
+  if (!isNaN(options.amount * 1)) {
+    options.amount = (options.amount * 1).toFixed(2);
+  }
+
+  var pluginOptions = [
+    options.amount,
+    options.primaryDescription,
+  ];
+
+  exec(successCallback, failureCallback, PLUGIN_ID, 'presentDropInPaymentUI', pluginOptions);
+};
+
 BraintreePlugin.paypalProcess = function paypalProcess(amount, currency, env, successCallback, failureCallback) {
   exec(successCallback, failureCallback, PLUGIN_ID, 'paypalProcess', [amount, currency, env]);
 };
