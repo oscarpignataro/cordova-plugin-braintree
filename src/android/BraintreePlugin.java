@@ -166,7 +166,15 @@ public final class BraintreePlugin extends CordovaPlugin implements PaymentMetho
         String primaryDescription = args.getString(1);
 
         dropInRequest.amount(amount);
-
+        dropInRequest.amount(amount);
+        ThreeDSecureRequest threeDSecureRequest = new ThreeDSecureRequest();
+        threeDSecureRequest.amount(threeDSecure.getString("amount"));
+        threeDSecureRequest.email(threeDSecure.getString("email"));
+        threeDSecureRequest.versionRequested(ThreeDSecureRequest.VERSION_2);
+        dropInRequest.requestThreeDSecureVerification(true);
+        dropInRequest.collectDeviceData(true);
+        dropInRequest.vaultManager(true);
+        dropInRequest.threeDSecureRequest(threeDSecureRequest);
        
 
         if (dropInRequest.isAndroidPayEnabled()) {
