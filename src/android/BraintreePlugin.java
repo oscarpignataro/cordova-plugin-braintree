@@ -165,7 +165,7 @@ public final class BraintreePlugin extends CordovaPlugin implements PaymentMetho
 
         dropInRequest.amount(amount);
 
-        dropInRequest.vaultManager(true);
+       
 
         if (dropInRequest.isAndroidPayEnabled()) {
             // // TODO: Make this conditional
