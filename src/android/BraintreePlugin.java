@@ -306,7 +306,7 @@ public final class BraintreePlugin extends CordovaPlugin implements PaymentMetho
         Map<String, Object> resultMap = this.getPaymentUINonceResult(paymentMethodNonce, deviceData);
         _callbackContext.success(new JSONObject(resultMap));
         _callbackContext = null;
-        } catch (Exception e) {
+        } catch (Exception ex) {
             Log.e(TAG, "onPaymentMethodNonceCreated  ==> error:" + ex.getMessage());
             ex.printStackTrace();
         }
