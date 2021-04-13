@@ -7,6 +7,16 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "https://cardinalcommerce.bintray.com/android"
+        credentials {
+            username ''
+            password ''
+        }
+    }
+}
+
 dependencies {
     api 'com.braintreepayments.api:braintree:3.+'
     api 'com.braintreepayments.api:drop-in:4.+'
